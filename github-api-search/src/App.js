@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import Repo from './Repo';
+import { colors, createTheme, Grid, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.blue[500],
+    }
+  }
+});
 
 function App() {
   
@@ -15,22 +24,31 @@ function App() {
 
     fetchRepos()
   }, [])
-  
 
+  const theme = createTheme({
+    
+  });
+  
   return (
-    <div className="App">
-      { items ? 
-        <section>
-          <h1> Viewing repository results for Molly</h1>
-          <div>
-            {console.log(items)}
-            {items.map((item) => (
-              <Repo key={item.id} {...item} />
-            ))}
-          </div>
-        </section> : "Loading..."
-      }
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        { items ? 
+          <section>
+            <h1> Viewing repository results for Molly</h1>
+            <div>
+              <Grid container spacing={3}>
+                  {items.map((item) => (
+                    <Grid item xs={4}>
+                      <Repo key={item.id} {...item} />
+                    </Grid>
+                    ))}
+              </Grid>
+            </div>
+          </section> : "Loading..."
+        }
+      </div>
+    </ThemeProvider>
+    
   );
 }
 
