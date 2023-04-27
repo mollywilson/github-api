@@ -15,9 +15,10 @@ function App() {
   
   const [query, setQuery] = useState([]);
   const [items, setItems] = useState([]);
+  const [language, setLanguage] = useState("JavaScript");
 
   const fetchRepos = async () => {
-    const res = await fetch(`https://api.github.com/search/repositories?q=${query}`)
+    const res = await fetch(`https://api.github.com/search/repositories?q=${query}+language=${language}`)
     const data = await res.json()
     setItems(data.items)
   }
@@ -37,15 +38,21 @@ function App() {
           <h1>Search for a Repository</h1>
         </Box>
 
-<Box my={4}>
-<form onSubmit={handleSubmit}>
-        <div>
-          <TextField type="text" color='primary' variant='outlined' placeholder="e.g. React Hooks" sx={{
-        width: 600 }} size='small' onChange={e => setQuery(e.target.value)}/>
-          <Button variant="outlined" color="primary" type="submit" sx={{height: 40, ml: 2}}>Search</Button>
-        </div>
-      </form>
-</Box>
+        <Box my={4}>
+        <FormControl onSubmit={handleSubmit}>
+          <Box>
+            <TextField 
+              type="text" 
+              color='primary' 
+              variant='outlined' 
+              placeholder="e.g. React Hooks" 
+              sx={{width: 600 }} 
+              size='small' 
+              onChange={e => setQuery(e.target.value)}/>
+            <Button variant="outlined" color="primary" type="submit" sx={{height: 40, ml: 2}}>Search</Button>
+          </Box>
+        </FormControl>
+        </Box>
         { items.length ? 
           <section>
             <Box sx={{mb: 2}}>
