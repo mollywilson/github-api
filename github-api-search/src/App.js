@@ -33,21 +33,25 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
+        <Box sx={{margin: 4}}>
+          <h1>Search for a Repository</h1>
+        </Box>
 
 <Box my={4}>
 <form onSubmit={handleSubmit}>
         <div>
-          <TextField type="text" color='primary' variant='outlined' onChange={e => setQuery(e.target.value)}/>
-          <Button variant="outlined" color="primary" type="submit">Search</Button>
+          <TextField type="text" color='primary' variant='outlined' placeholder="e.g. React Hooks" sx={{
+        width: 600 }} size='small' onChange={e => setQuery(e.target.value)}/>
+          <Button variant="outlined" color="primary" type="submit" sx={{height: 40, ml: 2}}>Search</Button>
         </div>
       </form>
 </Box>
-      
-
         { items.length ? 
           <section>
-            <h1> Repository results for "{query}"</h1>
-            <div>
+            <Box sx={{mb: 2}}>
+              <h1> Repository results for "{query}"</h1>
+            </Box>
+            <Box sx={{mx: 10}}>
               <Grid container spacing={3}>
                   {items.map((item) => (
                     <Grid item xs={4}>
@@ -55,8 +59,8 @@ function App() {
                     </Grid>
                     ))}
               </Grid>
-            </div>
-          </section> : "Search for a repository"
+            </Box>
+          </section> : ""
         }
       </div>
     </ThemeProvider>
