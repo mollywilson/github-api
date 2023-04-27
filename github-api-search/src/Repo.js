@@ -24,13 +24,12 @@ export default function Repo(props) {
                     <Link href={props.html_url}>{props.name}</Link>
                 </Typography>
                 <Typography gutterBottom variant="p">
-                    <p>by
+                    by
                         <Link href={"https://github.com/" + props.owner.login} ml="4px">
                             {props.owner.login}
                         </Link>
-                    </p>
                 </Typography>
-                <CardActions disableActionSpacing>
+                <CardActions>
                     <Box sx={{ display: 'flex'}}>
                         <Box>
                             Details
@@ -45,11 +44,15 @@ export default function Repo(props) {
                     
                 </CardActions>
                 <Collapse in={expanded}>
-                    <CardContent>
-                        <Typography>
-                            <p>Forks: {props.forks_count}</p>
-                            <p>Stars: {props.stargazers_count}</p>
-                            <p>Open Issues: {props.open_issues_count}</p>
+                    <CardContent sx={{display: "flex"}}>
+                        <Typography variant="p" sx={{m: 1}}>
+                            Forks: {props.forks_count}
+                        </Typography>
+                        <Typography variant="p" sx={{m: 1}}>
+                            Stars: {props.stargazers_count}
+                        </Typography>
+                        <Typography variant="p" sx={{m: 1}}>
+                            Open Issues: {props.open_issues_count}
                         </Typography>
                     </CardContent>
                 </Collapse>
