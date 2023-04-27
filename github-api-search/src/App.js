@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import Repo from './Repo';
-import { colors, createTheme, Grid, ThemeProvider } from '@mui/material';
+import { Box, Button, colors, createTheme, FormControl, Grid, ThemeProvider, TextField, FormLabel } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -13,28 +13,40 @@ const theme = createTheme({
 
 function App() {
   
+  const [query, setQuery] = useState([]);
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      const res = await fetch(`https://api.github.com/search/repositories?q=molly`)
-      const data = await res.json()
-      setItems(data.items)
-    }
+  const fetchRepos = async () => {
+    const res = await fetch(`https://api.github.com/search/repositories?q=${query}`)
+    const data = await res.json()
+    setItems(data.items)
+  }
 
-    fetchRepos()
-  }, [])
-
-  const theme = createTheme({
+  const handleSubmit = (event) => {
+    event.preventDefault()
     
-  });
+    fetchRepos();
+  }
+
+  const theme = createTheme({});
   
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        { items ? 
+
+<Box my={4}>
+<form onSubmit={handleSubmit}>
+        <div>
+          <TextField type="text" color='primary' variant='outlined' onChange={e => setQuery(e.target.value)}/>
+          <Button variant="outlined" color="primary" type="submit">Search</Button>
+        </div>
+      </form>
+</Box>
+      
+
+        { items.length ? 
           <section>
-            <h1> Viewing repository results for Molly</h1>
+            <h1> Repository results for "{query}"</h1>
             <div>
               <Grid container spacing={3}>
                   {items.map((item) => (
@@ -44,7 +56,7 @@ function App() {
                     ))}
               </Grid>
             </div>
-          </section> : "Loading..."
+          </section> : "Search for a repository"
         }
       </div>
     </ThemeProvider>
