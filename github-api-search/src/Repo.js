@@ -1,13 +1,10 @@
-import { Box, Card, CardActions, CardContent, Collapse, IconButton, Link, Typography, useTheme } from "@mui/material";
+import { Box, Card, CardActions, CardContent, Collapse, IconButton, Link, Typography } from "@mui/material";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useState } from "react";
-import { Global, css } from '@emotion/react'
 
 export default function Repo(props) {
 
-
-    const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
 
     const ExpandIcon = ({ expanded }) =>
@@ -25,23 +22,22 @@ export default function Repo(props) {
                 </Typography>
                 <Typography gutterBottom variant="p">
                     by
-                        <Link href={"https://github.com/" + props.owner.login} ml="4px">
-                            {props.owner.login}
-                        </Link>
+                    <Link href={"https://github.com/" + props.owner.login} ml="4px">
+                        {props.owner.login}
+                    </Link>
+                </Typography>
+                <Typography sx={{minHeight: "72px", mt: 6, ml: 4, textAlign: "left", }}>
+                    {props.description}
                 </Typography>
                 <CardActions>
-                    <Box sx={{ display: 'flex'}}>
+                    <Box sx={{ display: 'flex', ml: 3}}>
                         <Box>
                             Details
-                            <IconButton
-                                onClick={toggleExpanded}
-                            >
+                            <IconButton onClick={toggleExpanded}>
                                 <ExpandIcon expanded={expanded} />
                             </IconButton>
                         </Box>
-                        
                     </Box>
-                    
                 </CardActions>
                 <Collapse in={expanded}>
                     <CardContent sx={{display: "flex"}}>
@@ -56,7 +52,6 @@ export default function Repo(props) {
                         </Typography>
                     </CardContent>
                 </Collapse>
-                
             </CardContent>
         </Card>
     )
