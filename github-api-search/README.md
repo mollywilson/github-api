@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+Instructions
+    To run this project, run npm i to install all dependencies followed by npm start to run the application. To compile the scss, run sass App.scss App.css.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implementation Thoughts
 
-## Available Scripts
+    I have created the majority of the small application in the App.js file and one component Repo.js which contains the cards which display each of the repo details. 
 
-In the project directory, you can run:
+    In App.js, there are 2 functions. FetchRepos connects to the API and returns repositories on GitHub based on the user input. HandleSubmit triggers the FetchRepo function when the user submits their form. 
 
-### `npm start`
+    There is also a form to accept user input for a search term for the repo, and the option to filter by language.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    Once the user has submitted their form, the data is returned via a card grid to represent each result with a dropdown to show the specific details for each repo.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Struggles
 
-### `npm test`
+    I struggled to find out how to access readme details from the object returned from the API and therefore was unable to display this as part of the detailed card view.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+With More Time
+    I did not have time to add testing to my solution. However, I would add unit tests to ensure the form is displayed on the page and that the appropriate results are displayed on submission of the form. Also, I would test that there is a helpful message where the search returns no results or that the search term is empty (neither of which has been implemented yet).
 
-### `npm run build`
+    The design is very simplistic but functional and given more time I would like to make this more aesthetically pleasing - perhaps with a more exciting colour scheme, adding user avatar's to the card, hover states etc. It would be nice to create a custom theme using Material UI to implement this.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    Currently, the cards have a standard minimum height on the description so for most descriptions the cards are reasonably uniform. This shows a few lines of description, where the descriptions are really long the cards to unaligned and there are whitespaces on the page, it would be nice to set a character length for the descriptions to see just a preview where they are really long which could be expanded into a pop-up if a user chooses.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    I could add further filtering and sorting options for the user such as sorting by date created or most stars.
