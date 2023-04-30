@@ -1,7 +1,16 @@
 import { useState } from "react";
 import './App.css';
 import Repo from './Repo';
-import { Box, Button, Grid, Radio, RadioGroup, TextField, FormControlLabel } from '@mui/material';
+import { 
+  Box, 
+  Button,
+  FormControlLabel,
+  Grid, 
+  Radio, 
+  RadioGroup, 
+  TextField, 
+  Typography 
+} from '@mui/material';
 
 function App() {
   
@@ -21,38 +30,43 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <Box sx={{margin: 4}}>
-        <h1>Search for a Repository</h1>
+    <Box className="App">
+      <Box className="container">
+        <Typography variant="h1">Search for a Repository</Typography>
       </Box>
-      <Box my={4}>
+      <Box className="form-box">
         <form onSubmit={handleSubmit}>
-          <Box>
-            <TextField 
-              type="text" 
-              color='primary' 
-              variant='outlined' 
-              placeholder="e.g. React Hooks" 
-              sx={{width: 600 }} 
-              size='small' 
-              onChange={e => setQuery(e.target.value)}/>
-            <Button variant="outlined" color="primary" type="submit" sx={{height: 40, ml: 2}}>Search</Button>
+          <Box className="flex">
+            <Box>
+              <TextField 
+                type="text" 
+                color='primary' 
+                variant='outlined' 
+                placeholder="e.g. React Hooks" 
+                className="input-field"
+                size='small' 
+                onChange={e => setQuery(e.target.value)}
+                />
+                <Box>
+                  <RadioGroup row>
+                    <FormControlLabel value="javascript" control={<Radio />} label="JavaScript" onChange={e => setLanguage(e.target.value)} />
+                    <FormControlLabel value="java" control={<Radio />} label="Java" onChange={e => setLanguage(e.target.value)} />
+                    <FormControlLabel value="python" control={<Radio />} label="Python" onChange={e => setLanguage(e.target.value)} />
+                    <FormControlLabel value="typescript" control={<Radio />} label="TypeScript" onChange={e => setLanguage(e.target.value)} />
+                    <FormControlLabel value="php" control={<Radio />} label="PHP" onChange={e => setLanguage(e.target.value)} />
+                  </RadioGroup>
+              </Box>
+            </Box>
+            <Button variant="outlined" type="submit" className="button">Search</Button>
           </Box>
-          <RadioGroup row sx={{ml: 75}}>
-            <FormControlLabel value="javascript" control={<Radio />} label="JavaScript" onChange={e => setLanguage(e.target.value)} />
-            <FormControlLabel value="java" control={<Radio />} label="Java" onChange={e => setLanguage(e.target.value)} />
-            <FormControlLabel value="python" control={<Radio />} label="Python" onChange={e => setLanguage(e.target.value)} />
-            <FormControlLabel value="typescript" control={<Radio />} label="TypeScript" onChange={e => setLanguage(e.target.value)} />
-            <FormControlLabel value="php" control={<Radio />} label="PHP" onChange={e => setLanguage(e.target.value)} />
-          </RadioGroup>
         </form>
       </Box>
-      { items.length ? 
-        <section>
-          <Box sx={{mb: 2}}>
-            <h1> Repository results for "{query}"</h1>
+      { items.length ?
+      <Box>
+          <Box className="container">
+            <Typography variant="h2" component="h4"> Repository results for "{query}"</Typography>
           </Box>
-          <Box sx={{mx: 10}}>
+          <Box className="cards-grid">
             <Grid container spacing={3}>
                 {items.map((item) => (
                   <Grid item xs={4} key={item.id} >
@@ -60,10 +74,10 @@ function App() {
                   </Grid>
                   ))}
             </Grid>
-          </Box>
-        </section> : ""
+          </Box> 
+        </Box>: ""
       }
-    </div>
+    </Box>
   );
 }
 
