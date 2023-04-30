@@ -1,3 +1,11 @@
+$bold: 600;
+$font-s: 32px;
+$font-l: 42px;
+$spacing-xs: 12px;
+$spacing-s: 24px;
+$spacing-m: 32px;
+$spacing-l: 48px;
+
 .App {
   text-align: center;
 }
@@ -28,9 +36,10 @@
 
 .flex {
   display: flex;
-}
-.flex .MuiTypography-p {
-  margin: 12px;
+
+  .MuiTypography-p {
+    margin: $spacing-small;
+  }
 }
 
 .MuiBox-root .cards-grid {
@@ -38,22 +47,22 @@
 }
 
 h1.MuiTypography-h1 {
-  font-size: 42px;
-  font-weight: 600;
+  font-size: $font-l;
+  font-weight: $bold;
 }
 
 h4.MuiTypography-h2 {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: $font-s;
+  font-weight: $bold;
 }
 
-[type=submit].button {
+[type="submit"].button {
   height: 40px;
-  margin: 0 12px;
+  margin: 0 $spacing-xs;
 }
 
 .container.MuiBox-root {
-  margin: 32px;
+  margin: $spacing-m;
 }
 
 .form-box {
@@ -68,12 +77,10 @@ h4.MuiTypography-h2 {
 
 .MuiBox-root.card-description {
   min-height: 72px;
-  margin: 48px 0 0 32px;
+  margin: $spacing-l 0 0 $spacing-m;
   text-align: left;
 }
 
 .details-container {
-  margin-left: 24px;
+  margin-left: $spacing-s;
 }
-
-/*# sourceMappingURL=App.css.map */
