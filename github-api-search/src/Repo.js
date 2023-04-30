@@ -1,4 +1,13 @@
-import { Box, Card, CardActions, CardContent, Collapse, IconButton, Link, Typography } from "@mui/material";
+import { 
+    Box, 
+    Card, 
+    CardActions, 
+    CardContent, 
+    Collapse, 
+    IconButton, 
+    Link, 
+    Typography 
+} from "@mui/material";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useState } from "react";
@@ -15,7 +24,7 @@ export default function Repo(props) {
     };
 
     return (
-        <Card variant="outlined" sx={{ boxShadow: 3}} >
+        <Card variant="outlined" className="repo-card" >
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     <Link href={props.html_url}>{props.name}</Link>
@@ -26,11 +35,13 @@ export default function Repo(props) {
                         {props.owner.login}
                     </Link>
                 </Typography>
-                <Typography sx={{minHeight: "72px", mt: 6, ml: 4, textAlign: "left", }}>
-                    {props.description}
-                </Typography>
+                <Box className="container card-description">
+                    <Typography variant="p">
+                        {props.description}
+                    </Typography>
+                </Box>
                 <CardActions>
-                    <Box sx={{ display: 'flex', ml: 3}}>
+                    <Box className="flex details-container">
                         <Box>
                             Details
                             <IconButton onClick={toggleExpanded}>
@@ -40,14 +51,14 @@ export default function Repo(props) {
                     </Box>
                 </CardActions>
                 <Collapse in={expanded}>
-                    <CardContent sx={{display: "flex"}}>
-                        <Typography variant="p" sx={{m: 1}}>
+                    <CardContent className="flex">
+                        <Typography variant="p">
                             Forks: {props.forks_count}
                         </Typography>
-                        <Typography variant="p" sx={{m: 1}}>
+                        <Typography variant="p">
                             Stars: {props.stargazers_count}
                         </Typography>
-                        <Typography variant="p" sx={{m: 1}}>
+                        <Typography variant="p">
                             Open Issues: {props.open_issues_count}
                         </Typography>
                     </CardContent>
