@@ -18,7 +18,7 @@ Struggles
 With More Time
     I did not have time to add testing to my solution. However, I would add unit tests to ensure the form is displayed on the page and that the appropriate results are displayed on submission of the form. Also, I would test that there is a helpful message where the search returns no results or that the search term is empty (neither of which has been implemented yet).
 
-    The design is very simplistic but functional and given more time I would like to make this more aesthetically pleasing - perhaps with a more exciting colour scheme, adding user avatar's to the card, hover states etc. It would be nice to create a custom theme using Material UI to implement this.
+    The design is very simplistic but functional and given more time I would like to make this more aesthetically pleasing - perhaps with a more exciting colour scheme, adding user avatar's to the card, hover states etc. It would be nice to create a custom theme using Material UI to implement this. I would also adjust the design to accommodate a mobile view which is important for any application, but I ran out of time.
 
     Currently, the cards have a standard minimum height on the description so for most descriptions the cards are reasonably uniform. This shows a few lines of description, where the descriptions are really long the cards to unaligned and there are whitespaces on the page, it would be nice to set a character length for the descriptions to see just a preview where they are really long which could be expanded into a pop-up if a user chooses.
 
